@@ -1,12 +1,42 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: /
-    target-branch: "nix-actions"
-    schedule:
-      interval: weekly
-  - package-ecosystem: github-actions
-    directory: /
     target-branch: "rust-actions"
+    directory: "/"
     schedule:
-      interval: weekly
+      interval: daily
+    cooldown:
+      default-days: 5
+    groups:
+      minor-or-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: cargo
+    target-branch: "rust-actions"
+    directory: "/"
+    versioning-strategy: lockfile-only
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    groups:
+      minor-or-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: rust-toolchain
+    target-branch: "rust-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
