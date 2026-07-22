@@ -16,7 +16,7 @@ jobs:
   sanitizers:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: true
       - uses: ./.github/actions/install-deps
@@ -54,7 +54,7 @@ jobs:
   miri:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: true
       - uses: ./.github/actions/install-deps
@@ -73,7 +73,7 @@ jobs:
   loom:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: true
       - uses: ./.github/actions/install-deps
